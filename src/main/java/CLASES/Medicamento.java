@@ -13,6 +13,10 @@ public class Medicamento {
         this.via = via;
     }
 
+    public Medicamento(String paracetamol, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getNombre() {
         return nombre;
     }
