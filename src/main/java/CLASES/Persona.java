@@ -3,19 +3,21 @@ public class Persona {
     private int dni;
     private String nombre;
     private String apellido;
-    private int edad;
+    private int fechanacimiento;
     private String direccion;
     private String telefono;
     private String email;
+    private String genero;
 
-    public Persona(int dni, String nombre, String apellido, int edad, String direccion, String telefono, String email) {
+    public Persona(int dni, String nombre, String apellido, int fechanacimiento, String direccion, String telefono, String email, String genero) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.edad = edad;
+        this.fechanacimiento = fechanacimiento;
         this.direccion = direccion;
         this.telefono = telefono;
         this.email = email;
+        this.genero = genero;
     }
 
     public int getDni() {
@@ -42,12 +44,12 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public int getEdad() {
-        return edad;
+    public int getFechanacimiento() {
+        return fechanacimiento;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setFechanacimiento(int fechanacimiento) {
+        this.fechanacimiento = fechanacimiento;
     }
 
     public String getDireccion() {
@@ -74,6 +76,15 @@ public class Persona {
         this.email = email;
     }
 
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    
     public void registrar() {
     }
 

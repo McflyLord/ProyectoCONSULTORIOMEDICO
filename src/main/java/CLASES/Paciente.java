@@ -1,7 +1,5 @@
 package CLASES;
 
-import CLASES.Persona;
-
 public class Paciente extends Persona {
     private String grupoSanguineo;
     private String aversion;
@@ -11,8 +9,8 @@ public class Paciente extends Persona {
     private Receta receta;
     private HistorialMedico historialMedico;
 
-    public Paciente(String grupoSanguineo, String aversion, String enfermedades, Observacion observacion, Tratamiento tratamiento, Receta receta, HistorialMedico historialMedico, int dni, String nombre, String apellido, int edad, String direccion, String telefono, String email) {
-        super(dni, nombre, apellido, edad, direccion, telefono, email);
+    public Paciente(String grupoSanguineo, String aversion, String enfermedades, Observacion observacion, Tratamiento tratamiento, Receta receta, HistorialMedico historialMedico, int dni, String nombre, String apellido, int fechanacimiento, String direccion, String telefono, String email, String genero) {
+        super(dni, nombre, apellido, fechanacimiento, direccion, telefono, email, genero);
         this.grupoSanguineo = grupoSanguineo;
         this.aversion = aversion;
         this.enfermedades = enfermedades;
@@ -21,8 +19,6 @@ public class Paciente extends Persona {
         this.receta = receta;
         this.historialMedico = historialMedico;
     }
-
-    
 
     public String getGrupoSanguineo() {
         return grupoSanguineo;

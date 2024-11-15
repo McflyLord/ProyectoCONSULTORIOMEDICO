@@ -1,7 +1,5 @@
 package CLASES;
 
-import CLASES.Persona;
-
 public class Medico extends Persona {
     private String especialidad;
     private String colegiatura;
@@ -10,8 +8,8 @@ public class Medico extends Persona {
     private Departamento departamento;
     private EquipoMedico equipoMedico;
 
-    public Medico(String especialidad, String colegiatura, String grado, Horario horario, Departamento departamento, EquipoMedico equipoMedico, int dni, String nombre, String apellido, int edad, String direccion, String telefono, String email) {
-        super(dni, nombre, apellido, edad, direccion, telefono, email);
+    public Medico(String especialidad, String colegiatura, String grado, Horario horario, Departamento departamento, EquipoMedico equipoMedico, int dni, String nombre, String apellido, int fechanacimiento, String direccion, String telefono, String email, String genero) {
+        super(dni, nombre, apellido, fechanacimiento, direccion, telefono, email, genero);
         this.especialidad = especialidad;
         this.colegiatura = colegiatura;
         this.grado = grado;
@@ -19,8 +17,6 @@ public class Medico extends Persona {
         this.departamento = departamento;
         this.equipoMedico = equipoMedico;
     }
-
-    
 
     public String getEspecialidad() {
         return especialidad;
