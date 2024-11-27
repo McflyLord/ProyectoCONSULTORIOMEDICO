@@ -8,7 +8,7 @@ public class PacienteList {
 
     public void agregarPaciente(Paciente p) {
         listaPacientes.add(p);
-        System.out.println("Paciente agregado: " + p.getNombre());
+        System.out.println("Paciente agregado:" + p.getNombre());
     }
 
     public void eliminarPaciente(Paciente p) {
@@ -20,13 +20,15 @@ public class PacienteList {
     }
 
     public Paciente buscarPaciente(int dni) {
-        for (Paciente paciente : listaPacientes) {
-            if (paciente.getDni() == dni) {
-                return paciente;
-            }
+       for (Paciente paciente : listaPacientes) {
+        if (paciente.getDni() == dni) {
+            System.out.println("Paciente encontrado: " + paciente.getNombre());
+            return paciente;
         }
-        return null;
     }
+    System.out.println("Paciente " + dni + " no encontrado");
+    return null;
+}
 
     public void listarPacientes() {
         if (listaPacientes.isEmpty()) {
