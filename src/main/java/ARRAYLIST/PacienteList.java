@@ -1,43 +1,33 @@
 package ARRAYLIST;
+
 import CLASES.Paciente;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PacienteList {
-    List<Paciente> listaPacientes = new ArrayList<>();
+    List<Paciente> listaPacientes = new ArrayList<>();    //Instanciamos una variable de tipo list y lo llamamos ListaPacientes.
 
-    public void agregarPaciente(Paciente p) {
+    public void agregar(Paciente p) {       // Utilizamos add lo que nos permite agregar pacientes a la lista.
         listaPacientes.add(p);
-        System.out.println("Paciente agregado:" + p.getNombre());
+        System.out.println("Paciente agregado: ");
     }
 
-    public void eliminarPaciente(Paciente p) {
-        if (listaPacientes.remove(p)) {
-            System.out.println("Paciente eliminado: " + p.getNombre());
+    public void eliminar(Paciente p) {      // Con remove() nos permite eliminar valores de la lista, si la condición nos da
+        if (listaPacientes.remove(p)) {     // true (Verdadero) nos dira pacientes eliminado
+            System.out.println("Paciente eliminado: ");
         } else {
-            System.out.println("No se encontro");
+            System.out.println("No hay paciente"); // En caso de devolver False (Falso) nos dira No hay paciente.
         }
     }
 
-    public Paciente buscarPaciente(int dni) {
-       for (Paciente paciente : listaPacientes) {
-        if (paciente.getDni() == dni) {
-            System.out.println("Paciente encontrado: " + paciente.getNombre());
-            return paciente;
-        }
-    }
-    System.out.println("Paciente " + dni + " no encontrado");
-    return null;
+   public Paciente buscar(int dni) {
+    return listaPacientes.stream()
+                .filter(paciente -> paciente.getDni() == dni) // Usar 'paciente' en lugar de 'Paciente' como nombre de variable
+                .findFirst() // Busca el primer paciente que cumple la condición
+                .orElse(null); // Devuelve null si no encuentra el paciente.
 }
 
-    public void listarPacientes() {
-        if (listaPacientes.isEmpty()) {
-            System.out.println("No hay pacientes");
-        } else {
-            System.out.println("Lista de Pacientes:");
-            for (Paciente paciente : listaPacientes) {
-                System.out.println(paciente.getNombre());
-            }
-        }
+    public List<Paciente> listarPacientes() {
+        return this.listaPacientes; //Devuelve la lista completa de pacientes almacenados en el ArrayList
     }
 }

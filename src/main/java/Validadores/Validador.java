@@ -1,4 +1,6 @@
 package Validadores;
+import com.toedter.calendar.JDateChooser;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 // Usamos BOOLEAN por que al ser un validador es una condicion y este tipo de dato devuelve True y False.

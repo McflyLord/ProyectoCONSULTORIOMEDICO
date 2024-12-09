@@ -1,23 +1,27 @@
 package CLASES;
+import java.util.Date;
+
 public class Persona {
     private int dni;
-    private String nombre;
-    private String apellido;
-    private int fechanacimiento;
+    private String nombres;
+    private String apellidos;
     private String direccion;
-    private String telefono;
     private String email;
+    private String telefono;
     private String genero;
+    private java.util.Date fechaNacimiento;
 
-    public Persona(int dni, String nombre, String apellido, int fechanacimiento, String direccion, String telefono, String email, String genero) {
+    // Constructor
+    public Persona(int dni, String nombres, String apellidos, String direccion, String email, 
+                   String telefono, String genero, java.util.Date fechaNacimiento) {
         this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechanacimiento = fechanacimiento;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
         this.direccion = direccion;
-        this.telefono = telefono;
         this.email = email;
+        this.telefono = telefono;
         this.genero = genero;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public int getDni() {
@@ -28,28 +32,20 @@ public class Persona {
         this.dni = dni;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public int getFechanacimiento() {
-        return fechanacimiento;
-    }
-
-    public void setFechanacimiento(int fechanacimiento) {
-        this.fechanacimiento = fechanacimiento;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getDireccion() {
@@ -60,20 +56,20 @@ public class Persona {
         this.direccion = direccion;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getGenero() {
@@ -84,13 +80,12 @@ public class Persona {
         this.genero = genero;
     }
 
-    
-    public void registrar() {
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void modificar() {
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-    public void obtener() {
-    }
 }

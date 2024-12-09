@@ -1,23 +1,34 @@
 package CLASES;
+import java.util.Date;
 
 public class Paciente extends Persona {
+    private java.util.Date fechaInscripcion;
     private String grupoSanguineo;
-    private String aversion;
-    private String enfermedades;
+    private String adversiones;  
+    private String enfermedades; 
     private Observacion observacion;
     private Tratamiento tratamiento;
     private Receta receta;
     private HistorialMedico historialMedico;
 
-    public Paciente(String grupoSanguineo, String aversion, String enfermedades, Observacion observacion, Tratamiento tratamiento, Receta receta, HistorialMedico historialMedico, int dni, String nombre, String apellido, int fechanacimiento, String direccion, String telefono, String email, String genero) {
-        super(dni, nombre, apellido, fechanacimiento, direccion, telefono, email, genero);
+    public Paciente(Date fechaInscripcion, String grupoSanguineo, String adversiones, String enfermedades, Observacion observacion, Tratamiento tratamiento, Receta receta, HistorialMedico historialMedico, int dni, String nombres, String apellidos, String direccion, String email, String telefono, String genero, Date fechaNacimiento) {
+        super(dni, nombres, apellidos, direccion, email, telefono, genero, fechaNacimiento);
+        this.fechaInscripcion = fechaInscripcion;
         this.grupoSanguineo = grupoSanguineo;
-        this.aversion = aversion;
+        this.adversiones = adversiones;
         this.enfermedades = enfermedades;
         this.observacion = observacion;
         this.tratamiento = tratamiento;
         this.receta = receta;
         this.historialMedico = historialMedico;
+    }
+
+    public Date getFechaInscripcion() {
+        return fechaInscripcion;
+    }
+
+    public void setFechaInscripcion(Date fechaInscripcion) {
+        this.fechaInscripcion = fechaInscripcion;
     }
 
     public String getGrupoSanguineo() {
@@ -28,12 +39,12 @@ public class Paciente extends Persona {
         this.grupoSanguineo = grupoSanguineo;
     }
 
-    public String getAversion() {
-        return aversion;
+    public String getAdversiones() {
+        return adversiones;
     }
 
-    public void setAversion(String aversion) {
-        this.aversion = aversion;
+    public void setAdversiones(String adversiones) {
+        this.adversiones = adversiones;
     }
 
     public String getEnfermedades() {
@@ -76,15 +87,5 @@ public class Paciente extends Persona {
         this.historialMedico = historialMedico;
     }
 
-    public void registrar() {
-    }
-
-    public void obtener() {
-    }
-
-    public void agendarCita() {
-    }
-
-    public void consultarCita() {
-    }
+    
 }

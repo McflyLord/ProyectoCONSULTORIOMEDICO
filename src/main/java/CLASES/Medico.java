@@ -1,5 +1,7 @@
 package CLASES;
 
+import java.util.Date;
+
 public class Medico extends Persona {
     private String especialidad;
     private String colegiatura;
@@ -8,8 +10,8 @@ public class Medico extends Persona {
     private Departamento departamento;
     private EquipoMedico equipoMedico;
 
-    public Medico(String especialidad, String colegiatura, String grado, Horario horario, Departamento departamento, EquipoMedico equipoMedico, int dni, String nombre, String apellido, int fechanacimiento, String direccion, String telefono, String email, String genero) {
-        super(dni, nombre, apellido, fechanacimiento, direccion, telefono, email, genero);
+    public Medico(String especialidad, String colegiatura, String grado, Horario horario, Departamento departamento, EquipoMedico equipoMedico, int dni, String nombres, String apellidos, String direccion, String email, String telefono, String genero, Date fechaNacimiento) {
+        super(dni, nombres, apellidos, direccion, email, telefono, genero, fechaNacimiento);
         this.especialidad = especialidad;
         this.colegiatura = colegiatura;
         this.grado = grado;
@@ -66,20 +68,5 @@ public class Medico extends Persona {
         this.equipoMedico = equipoMedico;
     }
 
-    public void registrar() {
-    }
-
-    public void modificar() {
-    }
-
-    public void establecerHorario() {
-    }
-
-    public void asignarDepartamento(Departamento departamento) {
-        this.departamento = departamento;
-    }
-
-    public void asignarEquipoMedico(EquipoMedico equipoMedico) {
-        this.equipoMedico = equipoMedico;
-    }
+    
 }
