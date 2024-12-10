@@ -2,90 +2,89 @@ package CLASES;
 import java.util.Date;
 
 public class Persona {
-    private int dni;
-    private String nombres;
-    private String apellidos;
-    private String direccion;
-    private String email;
-    private String telefono;
-    private String genero;
-    private java.util.Date fechaNacimiento;
+    int F_dni;
+    private String F_nombres;
+    private String F_apellidos;
+    private Date F_fechaNacimiento;
+    private String F_direccion;
+    private int F_telefono;
+    private String F_email;
 
-    // Constructor
-    public Persona(int dni, String nombres, String apellidos, String direccion, String email, 
-                   String telefono, String genero, java.util.Date fechaNacimiento) {
-        this.dni = dni;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.direccion = direccion;
-        this.email = email;
-        this.telefono = telefono;
-        this.genero = genero;
-        this.fechaNacimiento = fechaNacimiento;
+    public Persona(int F_dni, String F_nombres, String F_apellidos, Date F_fechaNacimiento, String F_direccion, int F_telefono, String F_email) {
+        this.F_dni = F_dni;
+        this.F_nombres = F_nombres;
+        this.F_apellidos = F_apellidos;
+        this.F_fechaNacimiento = F_fechaNacimiento;
+        this.F_direccion = F_direccion;
+        this.F_telefono = F_telefono;
+        this.F_email = F_email;
     }
 
-    public int getDni() {
-        return dni;
+    public int getF_dni() {
+        return F_dni;
     }
 
-    public void setDni(int dni) {
-        this.dni = dni;
+    public void setF_dni(int F_dni) {
+        this.F_dni = F_dni;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getF_nombres() {
+        return F_nombres;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setF_nombres(String F_nombres) {
+        this.F_nombres = F_nombres;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getF_apellidos() {
+        return F_apellidos;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setF_apellidos(String F_apellidos) {
+        this.F_apellidos = F_apellidos;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public Date getF_fechaNacimiento() {
+        return F_fechaNacimiento;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setF_fechaNacimiento(Date F_fechaNacimiento) {
+        this.F_fechaNacimiento = F_fechaNacimiento;
     }
 
-    public String getEmail() {
-        return email;
+    public String getF_direccion() {
+        return F_direccion;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setF_direccion(String F_direccion) {
+        this.F_direccion = F_direccion;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public int getF_telefono() {
+        return F_telefono;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setF_telefono(int F_telefono) {
+        this.F_telefono = F_telefono;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getF_email() {
+        return F_email;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setF_email(String F_email) {
+        this.F_email = F_email;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public void registrar() {
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void modificar() {
     }
 
+    public void eliminar() {
+    }
+
+    public void buscar() {
+    }
 }

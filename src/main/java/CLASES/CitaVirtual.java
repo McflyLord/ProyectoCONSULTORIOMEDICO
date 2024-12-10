@@ -1,21 +1,19 @@
 package CLASES;
-
 import java.util.Date;
 
 public class CitaVirtual extends Cita {
-    private String link;
+    private String F_link;
 
-    public CitaVirtual(String link, int numeroCita, Date fechaCita, String horaCita, String motivoCita, Paciente paciente, Medico medico) {
-        super(numeroCita, fechaCita, horaCita, motivoCita, paciente, medico);
-        this.link = link;
+    public CitaVirtual(int F_numeroCita, Date F_fechaCita, Date F_horaCita, String F_motivoCita) {
+        super(F_numeroCita, F_fechaCita, F_horaCita, F_motivoCita);
     }
 
-    public String getLink() {
-        return link;
+    public String getF_link() {
+        return F_link;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setF_link(String F_link) {
+        this.F_link = F_link;
     }
 
     @Override

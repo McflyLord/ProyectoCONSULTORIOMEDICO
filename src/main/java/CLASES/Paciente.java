@@ -2,90 +2,53 @@ package CLASES;
 import java.util.Date;
 
 public class Paciente extends Persona {
-    private java.util.Date fechaInscripcion;
-    private String grupoSanguineo;
-    private String adversiones;  
-    private String enfermedades; 
-    private Observacion observacion;
-    private Tratamiento tratamiento;
-    private Receta receta;
-    private HistorialMedico historialMedico;
+    private String F_grupoSanguineo;
+    private String F_aversiones;
+    private String F_enfermedades;
+    private Date F_fechaInscripcion;
 
-    public Paciente(Date fechaInscripcion, String grupoSanguineo, String adversiones, String enfermedades, Observacion observacion, Tratamiento tratamiento, Receta receta, HistorialMedico historialMedico, int dni, String nombres, String apellidos, String direccion, String email, String telefono, String genero, Date fechaNacimiento) {
-        super(dni, nombres, apellidos, direccion, email, telefono, genero, fechaNacimiento);
-        this.fechaInscripcion = fechaInscripcion;
-        this.grupoSanguineo = grupoSanguineo;
-        this.adversiones = adversiones;
-        this.enfermedades = enfermedades;
-        this.observacion = observacion;
-        this.tratamiento = tratamiento;
-        this.receta = receta;
-        this.historialMedico = historialMedico;
+    Paciente(String F_grupoSanguineo, String F_aversiones, String F_enfermedades, Date F_fechaInscripcion, int F_dni, String F_nombres, String F_apellidos, Date F_fechaNacimiento, String F_genero, String F_direccion, int F_telefono, String F_email) {
+        super(F_dni, F_nombres, F_apellidos, F_fechaNacimiento, F_direccion, F_telefono, F_email);
+        this.F_grupoSanguineo = F_grupoSanguineo;
+        this.F_aversiones = F_aversiones;
+        this.F_enfermedades = F_enfermedades;
+        this.F_fechaInscripcion = F_fechaInscripcion;
     }
 
-    public Date getFechaInscripcion() {
-        return fechaInscripcion;
+    public String getF_grupoSanguineo() {
+        return F_grupoSanguineo;
     }
 
-    public void setFechaInscripcion(Date fechaInscripcion) {
-        this.fechaInscripcion = fechaInscripcion;
+    public void setF_grupoSanguineo(String F_grupoSanguineo) {
+        this.F_grupoSanguineo = F_grupoSanguineo;
     }
 
-    public String getGrupoSanguineo() {
-        return grupoSanguineo;
+    public String getF_aversiones() {
+        return F_aversiones;
     }
 
-    public void setGrupoSanguineo(String grupoSanguineo) {
-        this.grupoSanguineo = grupoSanguineo;
+    public void setF_aversiones(String F_aversiones) {
+        this.F_aversiones = F_aversiones;
     }
 
-    public String getAdversiones() {
-        return adversiones;
+    public String getF_enfermedades() {
+        return F_enfermedades;
     }
 
-    public void setAdversiones(String adversiones) {
-        this.adversiones = adversiones;
+    public void setF_enfermedades(String F_enfermedades) {
+        this.F_enfermedades = F_enfermedades;
     }
 
-    public String getEnfermedades() {
-        return enfermedades;
+    public Date getF_fechaInscripcion() {
+        return F_fechaInscripcion;
     }
 
-    public void setEnfermedades(String enfermedades) {
-        this.enfermedades = enfermedades;
-    }
-
-    public Observacion getObservacion() {
-        return observacion;
-    }
-
-    public void setObservacion(Observacion observacion) {
-        this.observacion = observacion;
-    }
-
-    public Tratamiento getTratamiento() {
-        return tratamiento;
-    }
-
-    public void setTratamiento(Tratamiento tratamiento) {
-        this.tratamiento = tratamiento;
-    }
-
-    public Receta getReceta() {
-        return receta;
-    }
-
-    public void setReceta(Receta receta) {
-        this.receta = receta;
-    }
-
-    public HistorialMedico getHistorialMedico() {
-        return historialMedico;
-    }
-
-    public void setHistorialMedico(HistorialMedico historialMedico) {
-        this.historialMedico = historialMedico;
+    public void setF_fechaInscripcion(Date F_fechaInscripcion) {
+        this.F_fechaInscripcion = F_fechaInscripcion;
     }
 
     
-}
+    public void mostrarHistorial() {
+    }
+ }   
+

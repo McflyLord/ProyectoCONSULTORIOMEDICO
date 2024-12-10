@@ -40,14 +40,28 @@ public class Principal extends javax.swing.JFrame {
         Panel2 = new javax.swing.JPanel();
         PanelPaciente = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jtbDatos = new javax.swing.JTable();
+        tbPacientes = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
         ButtonEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
-        PanelMedico = new javax.swing.JPanel();
         PanelCita = new javax.swing.JPanel();
+        btnAgregarCita = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnEliminarCita = new javax.swing.JButton();
+        btnBuscarCita = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbCitas = new javax.swing.JTable();
+        PanelMedico = new javax.swing.JPanel();
+        btnAgregarMedico = new javax.swing.JButton();
+        btnEditarMedico = new javax.swing.JButton();
+        btnEliminarMedico = new javax.swing.JButton();
+        btnBuscarMedico = new javax.swing.JButton();
+        txtBuscarMedico = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbMedico = new javax.swing.JTable();
         PanelPrincipal = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -103,11 +117,9 @@ public class Principal extends javax.swing.JFrame {
 
         PanelPaciente.setBackground(new java.awt.Color(204, 204, 0));
 
-        jtbDatos.setAutoCreateRowSorter(true);
-        jtbDatos.setBackground(new java.awt.Color(255, 255, 204));
-        jtbDatos.setModel(new javax.swing.table.DefaultTableModel(
+        tbPacientes.setAutoCreateRowSorter(true);
+        tbPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
@@ -117,8 +129,9 @@ public class Principal extends javax.swing.JFrame {
                 "DNI", "Nombres", "Apellidos", "Género", "Fecha de Nacimiento", "Dirección", "Email", "Telefono", "Grupo sanguíneo", "Adversión", "Enfermedades"
             }
         ));
-        jtbDatos.setSelectionBackground(new java.awt.Color(204, 255, 255));
-        jScrollPane2.setViewportView(jtbDatos);
+        tbPacientes.setSelectionBackground(new java.awt.Color(204, 255, 255));
+        tbPacientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(tbPacientes);
 
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,8 +141,18 @@ public class Principal extends javax.swing.JFrame {
         });
 
         ButtonEditar.setText("Editar");
+        ButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEditarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +184,7 @@ public class Principal extends javax.swing.JFrame {
         PanelPacienteLayout.setVerticalGroup(
             PanelPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPacienteLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(ButtonEditar)
@@ -175,11 +198,163 @@ public class Principal extends javax.swing.JFrame {
 
         Panel2.add(PanelPaciente, "card2");
 
-        PanelMedico.setBackground(new java.awt.Color(204, 255, 255));
-        Panel2.add(PanelMedico, "card3");
-
         PanelCita.setBackground(new java.awt.Color(255, 204, 204));
-        Panel2.add(PanelCita, "card4");
+        PanelCita.setPreferredSize(new java.awt.Dimension(639, 475));
+
+        btnAgregarCita.setText("Agregar");
+        btnAgregarCita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarCitaActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnEliminarCita.setText("Eliminar");
+
+        btnBuscarCita.setText("Buscar");
+        btnBuscarCita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarCitaActionPerformed(evt);
+            }
+        });
+
+        tbCitas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Numero", "Fecha", "Hora", "Motivo"
+            }
+        ));
+        tbCitas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane3.setViewportView(tbCitas);
+
+        javax.swing.GroupLayout PanelCitaLayout = new javax.swing.GroupLayout(PanelCita);
+        PanelCita.setLayout(PanelCitaLayout);
+        PanelCitaLayout.setHorizontalGroup(
+            PanelCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCitaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
+                    .addGroup(PanelCitaLayout.createSequentialGroup()
+                        .addComponent(btnAgregarCita)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminarCita)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscarCita)))
+                .addContainerGap())
+        );
+        PanelCitaLayout.setVerticalGroup(
+            PanelCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCitaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarCita)
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminarCita)
+                    .addComponent(btnBuscarCita)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Panel2.add(PanelCita, "card3");
+
+        PanelMedico.setBackground(new java.awt.Color(204, 255, 255));
+
+        btnAgregarMedico.setText("Agregar");
+        btnAgregarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarMedicoActionPerformed(evt);
+            }
+        });
+
+        btnEditarMedico.setText("Editar");
+        btnEditarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarMedicoActionPerformed(evt);
+            }
+        });
+
+        btnEliminarMedico.setText("Eliminar");
+        btnEliminarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarMedicoActionPerformed(evt);
+            }
+        });
+
+        btnBuscarMedico.setText("Buscar");
+        btnBuscarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarMedicoActionPerformed(evt);
+            }
+        });
+
+        tbMedico.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "DNI", "Nombres", "Apellidos", "Fecha de nacimiento", "Género", "Dirección", "Teléfono", "Email", "Colegiatura", "Especialidad", "Grado"
+            }
+        ));
+        tbMedico.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(tbMedico);
+
+        javax.swing.GroupLayout PanelMedicoLayout = new javax.swing.GroupLayout(PanelMedico);
+        PanelMedico.setLayout(PanelMedicoLayout);
+        PanelMedicoLayout.setHorizontalGroup(
+            PanelMedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelMedicoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelMedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(PanelMedicoLayout.createSequentialGroup()
+                        .addComponent(btnAgregarMedico)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditarMedico)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminarMedico)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                        .addComponent(txtBuscarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscarMedico)))
+                .addContainerGap())
+        );
+        PanelMedicoLayout.setVerticalGroup(
+            PanelMedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelMedicoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelMedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarMedico)
+                    .addComponent(btnEditarMedico)
+                    .addComponent(btnEliminarMedico)
+                    .addComponent(txtBuscarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarMedico))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
+
+        Panel2.add(PanelMedico, "card4");
 
         PanelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         PanelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -229,6 +404,46 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnAgregarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCitaActionPerformed
+AgregarCita agregar = new AgregarCita(); // Instanciamos.
+            agregar.setVisible(true); // Para poder visualizar la Interfaz que eligamos.
+            dispose(); // Cierra la ventana.
+    }//GEN-LAST:event_btnAgregarCitaActionPerformed
+
+    private void btnBuscarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarCitaActionPerformed
+
+    private void ButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonEditarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnAgregarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMedicoActionPerformed
+   AgregarMedico agregar = new AgregarMedico(); // Instanciamos.
+            agregar.setVisible(true); // Para poder visualizar la Interfaz que eligamos.
+            dispose(); // Cierra la ventana.
+    }//GEN-LAST:event_btnAgregarMedicoActionPerformed
+
+    private void btnEditarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarMedicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarMedicoActionPerformed
+
+    private void btnEliminarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMedicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarMedicoActionPerformed
+
+    private void btnBuscarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMedicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarMedicoActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -274,17 +489,31 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel PanelPaciente;
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregarCita;
+    private javax.swing.JButton btnAgregarMedico;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnBuscarCita;
+    private javax.swing.JButton btnBuscarMedico;
     private javax.swing.JButton btnCita;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEditarMedico;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnEliminarCita;
+    private javax.swing.JButton btnEliminarMedico;
     private javax.swing.JButton btnMedico;
     private javax.swing.JButton btnPaciente;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jtbDatos;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbCitas;
+    private javax.swing.JTable tbMedico;
+    private javax.swing.JTable tbPacientes;
     private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtBuscarMedico;
     // End of variables declaration//GEN-END:variables
 }

@@ -22,7 +22,7 @@ public class PacienteList {
 
    public Paciente buscar(int dni) {
     return listaPacientes.stream()
-                .filter(paciente -> paciente.getDni() == dni) // Usar 'paciente' en lugar de 'Paciente' como nombre de variable
+                .filter(paciente -> paciente.getF_dni()== dni) // Usar 'paciente' en lugar de 'Paciente' como nombre de variable
                 .findFirst() // Busca el primer paciente que cumple la condición
                 .orElse(null); // Devuelve null si no encuentra el paciente.
 }

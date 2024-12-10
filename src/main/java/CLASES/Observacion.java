@@ -1,33 +1,32 @@
 package CLASES;
-
 import java.util.Date;
 
 public class Observacion {
-    private String descripcion;
-    private Date fecha;
+   private String F_descripcion;
+    private Date F_fecha;
 
-    public Observacion(String descripcion, Date fecha) {
-        this.descripcion = descripcion;
-        this.fecha = fecha;
+    public Observacion(String F_descripcion, Date F_fecha) {
+        this.F_descripcion = F_descripcion;
+        this.F_fecha = F_fecha;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getF_descripcion() {
+        return F_descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setF_descripcion(String F_descripcion) {
+        this.F_descripcion = F_descripcion;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getF_fecha() {
+        return F_fecha;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setF_fecha(Date F_fecha) {
+        this.F_fecha = F_fecha;
     }
 
-    public void registrarObservacion() {
+    public void agregarRegistro() {
     }
 }
 

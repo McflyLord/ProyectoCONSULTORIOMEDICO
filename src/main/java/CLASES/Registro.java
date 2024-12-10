@@ -1,45 +1,55 @@
 package CLASES;
-
 import java.util.Date;
 
 public class Registro {
-    private Date fecha;
-    private String descripcion;
-    private String tipo;
+    private Date F_fechaRegistro;
+    private Tratamiento F_tratamiento;
+    private Observacion F_observacion;
+    private Receta F_receta;
 
-    public Registro(Date fecha, String descripcion, String tipo) {
-        this.fecha = fecha;
-        this.descripcion = descripcion;
-        this.tipo = tipo;
+    public Registro(Date F_fechaRegistro, Tratamiento F_tratamiento, Observacion F_observacion, Receta F_receta) {
+        this.F_fechaRegistro = F_fechaRegistro;
+        this.F_tratamiento = F_tratamiento;
+        this.F_observacion = F_observacion;
+        this.F_receta = F_receta;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getF_fechaRegistro() {
+        return F_fechaRegistro;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setF_fechaRegistro(Date F_fechaRegistro) {
+        this.F_fechaRegistro = F_fechaRegistro;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public Tratamiento getF_tratamiento() {
+        return F_tratamiento;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setF_tratamiento(Tratamiento F_tratamiento) {
+        this.F_tratamiento = F_tratamiento;
     }
 
-    public String getTipo() {
-        return tipo;
+    public Observacion getF_observacion() {
+        return F_observacion;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setF_observacion(Observacion F_observacion) {
+        this.F_observacion = F_observacion;
     }
 
-    public void registrarRegistro() {
+    public Receta getF_receta() {
+        return F_receta;
     }
 
-    public void obtenerDetalles() {
+    public void setF_receta(Receta F_receta) {
+        this.F_receta = F_receta;
+    }
+
+    public void obtenerRegistro() {
+
+    }
+
+    public void eliminarRegistro() {
     }
 }

@@ -1,30 +1,30 @@
 package CLASES;
 
 public class Tratamiento {
-    private String descripcion;
-    private int duracion;
+     private String F_descripcion;
+    private int F_duracion;
 
-    public Tratamiento(String descripcion, int duracion) {
-        this.descripcion = descripcion;
-        this.duracion = duracion;
+    public Tratamiento(String F_descripcion, int F_duracion) {
+        this.F_descripcion = F_descripcion;
+        this.F_duracion = F_duracion;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getF_descripcion() {
+        return F_descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setF_descripcion(String F_descripcion) {
+        this.F_descripcion = F_descripcion;
     }
 
-    public int getDuracion() {
-        return duracion;
+    public int getF_duracion() {
+        return F_duracion;
     }
 
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
+    public void setF_duracion(int F_duracion) {
+        this.F_duracion = F_duracion;
     }
 
-    public void empezarTratamiento() {
+    public void agregarRegistro() {
     }
 }

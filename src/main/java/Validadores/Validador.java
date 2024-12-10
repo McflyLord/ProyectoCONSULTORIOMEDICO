@@ -15,12 +15,12 @@ public class Validador {
 
     // Validamos Nombres y Apellidos con letras y espacios
     public static boolean Letras(String texto) {
-        return texto.matches("[a-zA-Z\\s]+");
+        return texto.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\\\s'-]+");
     }
 
     // Validamos dirección
     public static boolean Direccion(String direccion) {
-        return direccion.matches("[a-zA-Z\\d\\s#.,-]+");
+        return direccion.matches("[a-zA-Z\\\\d\\\\s#.,-°/áéíóúÁÉÍÓÚñÑ]+");
     }
 
     // Validamos Email

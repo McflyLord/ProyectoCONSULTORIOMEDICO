@@ -1,79 +1,54 @@
 package CLASES;
-
 import java.util.Date;
 
 public class Cita {
-    private int numeroCita;
-    private Date fechaCita;
-    private String horaCita;
-    private String motivoCita;
-    private Paciente paciente;
-    private Medico medico;
+    private int F_numeroCita;
+    private Date F_fechaCita;
+    private Date F_horaCita;
+    private String F_motivoCita;
 
-    public Cita(int numeroCita, Date fechaCita, String horaCita, String motivoCita, Paciente paciente, Medico medico) {
-        this.numeroCita = numeroCita;
-        this.fechaCita = fechaCita;
-        this.horaCita = horaCita;
-        this.motivoCita = motivoCita;
-        this.paciente = paciente;
-        this.medico = medico;
+    public Cita(int F_numeroCita, Date F_fechaCita, Date F_horaCita, String F_motivoCita) {
+        this.F_numeroCita = F_numeroCita;
+        this.F_fechaCita = F_fechaCita;
+        this.F_horaCita = F_horaCita;
+        this.F_motivoCita = F_motivoCita;
     }
 
-    public int getNumeroCita() {
-        return numeroCita;
+    public int getF_numeroCita() {
+        return F_numeroCita;
     }
 
-    public void setNumeroCita(int numeroCita) {
-        this.numeroCita = numeroCita;
+    public void setF_numeroCita(int F_numeroCita) {
+        this.F_numeroCita = F_numeroCita;
     }
 
-    public Date getFechaCita() {
-        return fechaCita;
+    public Date getF_fechaCita() {
+        return F_fechaCita;
     }
 
-    public void setFechaCita(Date fechaCita) {
-        this.fechaCita = fechaCita;
+    public void setF_fechaCita(Date F_fechaCita) {
+        this.F_fechaCita = F_fechaCita;
     }
 
-    public String getHoraCita() {
-        return horaCita;
+    public Date getF_horaCita() {
+        return F_horaCita;
     }
 
-    public void setHoraCita(String horaCita) {
-        this.horaCita = horaCita;
+    public void setF_horaCita(Date F_horaCita) {
+        this.F_horaCita = F_horaCita;
     }
 
-    public String getMotivoCita() {
-        return motivoCita;
+    public String getF_motivoCita() {
+        return F_motivoCita;
     }
 
-    public void setMotivoCita(String motivoCita) {
-        this.motivoCita = motivoCita;
+    public void setF_motivoCita(String F_motivoCita) {
+        this.F_motivoCita = F_motivoCita;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
-    public Medico getMedico() {
-        return medico;
-    }
-
-    public void setMedico(Medico medico) {
-        this.medico = medico;
-    }
-
-    
     public void agendarCita() {
     }
 
     public void cancelarCita() {
-    }
-
-    public void modificarCita() {
     }
 }
