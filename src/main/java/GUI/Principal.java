@@ -4,12 +4,24 @@
  */
 package GUI;
 
+import ARRAYLIST.MedicoList;
+import ARRAYLIST.PacienteList;
+import CLASES.Medico;
+import CLASES.Paciente;
+import Validadores.Validador;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Pablo
  */
 public class Principal extends javax.swing.JFrame {
-
+    private PacienteList pacienteList = new PacienteList();
+    private MedicoList medicoList = new MedicoList();     // Lista de pacientes
     /**
      * Creates new form Principal
      */
@@ -46,9 +58,10 @@ public class Principal extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
+        btnListar = new javax.swing.JButton();
         PanelCita = new javax.swing.JPanel();
         btnAgregarCita = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
+        btnEditarCita = new javax.swing.JButton();
         btnEliminarCita = new javax.swing.JButton();
         btnBuscarCita = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -62,6 +75,7 @@ public class Principal extends javax.swing.JFrame {
         txtBuscarMedico = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMedico = new javax.swing.JTable();
+        btnListarMedico = new javax.swing.JButton();
         PanelPrincipal = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -120,13 +134,10 @@ public class Principal extends javax.swing.JFrame {
         tbPacientes.setAutoCreateRowSorter(true);
         tbPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "DNI", "Nombres", "Apellidos", "Género", "Fecha de Nacimiento", "Dirección", "Email", "Telefono", "Grupo sanguíneo", "Adversión", "Enfermedades"
+                "DNI", "Nombres", "Apellidos", "Género", "Fecha Naci.", "Dirección", "Email", "Telefono", "G. sanguíneo", "Adversión", "Enfermedades", "Fecha Ins."
             }
         ));
         tbPacientes.setSelectionBackground(new java.awt.Color(204, 255, 255));
@@ -161,6 +172,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelPacienteLayout = new javax.swing.GroupLayout(PanelPaciente);
         PanelPaciente.setLayout(PanelPacienteLayout);
         PanelPacienteLayout.setHorizontalGroup(
@@ -168,15 +186,17 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(PanelPacienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                     .addGroup(PanelPacienteLayout.createSequentialGroup()
                         .addComponent(btnAgregar)
                         .addGap(18, 18, 18)
                         .addComponent(ButtonEditar)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnListar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscar)))
                 .addContainerGap())
@@ -190,7 +210,8 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(ButtonEditar)
                     .addComponent(btnEliminar)
                     .addComponent(btnBuscar)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
@@ -208,10 +229,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarCita.setText("Editar");
+        btnEditarCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
+                btnEditarCitaActionPerformed(evt);
             }
         });
 
@@ -226,10 +247,7 @@ public class Principal extends javax.swing.JFrame {
 
         tbCitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Numero", "Fecha", "Hora", "Motivo"
@@ -249,7 +267,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(PanelCitaLayout.createSequentialGroup()
                         .addComponent(btnAgregarCita)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEditar)
+                        .addComponent(btnEditarCita)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminarCita)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
@@ -264,7 +282,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PanelCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarCita)
-                    .addComponent(btnEditar)
+                    .addComponent(btnEditarCita)
                     .addComponent(btnEliminarCita)
                     .addComponent(btnBuscarCita)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -307,17 +325,21 @@ public class Principal extends javax.swing.JFrame {
 
         tbMedico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "DNI", "Nombres", "Apellidos", "Fecha de nacimiento", "Género", "Dirección", "Teléfono", "Email", "Colegiatura", "Especialidad", "Grado"
+                "Colegiatura", "DNI", "Nombres", "Apellidos", "Fecha de nacimiento", "Género", "Dirección", "Teléfono", "Email", "Especialidad", "Grado"
             }
         ));
         tbMedico.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tbMedico);
+
+        btnListarMedico.setText("Listar");
+        btnListarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarMedicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelMedicoLayout = new javax.swing.GroupLayout(PanelMedico);
         PanelMedico.setLayout(PanelMedicoLayout);
@@ -326,15 +348,17 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(PanelMedicoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelMedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                     .addGroup(PanelMedicoLayout.createSequentialGroup()
                         .addComponent(btnAgregarMedico)
                         .addGap(18, 18, 18)
                         .addComponent(btnEditarMedico)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminarMedico)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                        .addComponent(txtBuscarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnListarMedico)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtBuscarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscarMedico)))
                 .addContainerGap())
@@ -348,7 +372,8 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(btnEditarMedico)
                     .addComponent(btnEliminarMedico)
                     .addComponent(txtBuscarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarMedico))
+                    .addComponent(btnBuscarMedico)
+                    .addComponent(btnListarMedico))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
@@ -401,12 +426,37 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+      String F_dniTexto = txtBuscar.getText().trim(); // Obtenemos lo ingresado en txtBuscar y el (.trim) limpia los espacios en blanco.
+    
+      //Validamos si el campo esta vacío, el (.isEmpty) comprueba si esat vacío.
+    if (F_dniTexto.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese un DNI");
+        return; // Si falla el programa se detiene.
+    }
+    
+    //Validamos El campo.
+    if (!Validador.DNI(F_dniTexto)) {
+    JOptionPane.showMessageDialog(this, "El DNI debe contener exactamente 8 dígitos numéricos.");
+    txtBuscar.setText(""); // Limpia el campo.
+    return;
+    }
+    
+    int dni = Integer.parseInt(F_dniTexto);       // Convierte en valor ingresado a entero.
+    
+    // Buscar paciente.
+    Paciente paciente = pacienteList.buscar(dni);       //usamos el metodo buscar de la arraylist.
+    if (paciente != null) {     // Si se encuentra al paciente.
+        actualizar1(List.of(paciente)); // Llama al método actualiza y este crea una lista con el paciente que encontro.
+    } else {    // De no haber pasiente manda este mensaje.
+        JOptionPane.showMessageDialog(this, "No hay paciente");
+    }
+
+    txtBuscar.setText(""); // Limpia el campo después de buscar.
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarActionPerformed
+    private void btnEditarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCitaActionPerformed
+
+    }//GEN-LAST:event_btnEditarCitaActionPerformed
 
     private void btnAgregarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCitaActionPerformed
 AgregarCita agregar = new AgregarCita(); // Instanciamos.
@@ -419,11 +469,35 @@ AgregarCita agregar = new AgregarCita(); // Instanciamos.
     }//GEN-LAST:event_btnBuscarCitaActionPerformed
 
     private void ButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_ButtonEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+    // Obtener la fila seleccionada.
+    int filaSeleccionada = tbPacientes.getSelectedRow();
+
+    // Validar si se seleccionó una fila.
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione un paciente", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Salir del método si no hay selección.
+    }
+
+    // Obtener el DNI .
+    int dni = (int) tbPacientes.getValueAt(filaSeleccionada, 0);
+
+    // Buscar al paciente en la lista.
+    Paciente paciente = pacienteList.buscar(dni);
+    if (paciente != null) {
+        // Eliminar el paciente si existe.
+        pacienteList.eliminar(paciente);
+        JOptionPane.showMessageDialog(this, "Paciente eliminado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        // Actualizar la tabla después de la eliminación.
+        btnListarActionPerformed(null); // Vuelve a cargar los datos en la tabla.
+    } else {
+        // Mostrar mensaje si el paciente no fue encontrado.
+        JOptionPane.showMessageDialog(this, "No se encontró el paciente con el DNI seleccionado.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMedicoActionPerformed
@@ -437,12 +511,116 @@ AgregarCita agregar = new AgregarCita(); // Instanciamos.
     }//GEN-LAST:event_btnEditarMedicoActionPerformed
 
     private void btnEliminarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMedicoActionPerformed
-        // TODO add your handling code here:
+        // Obtener la fila seleccionada.
+    int filaSeleccionada = tbMedico.getSelectedRow();
+
+    // Validar si se seleccionó una fila.
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione un medico", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Salir del método si no hay selección.
+    }
+
+    // Obtener el DNI .
+    int dni = (int) tbMedico.getValueAt(filaSeleccionada, 0);
+
+    // Buscar al medico en la lista.
+    Medico medico = medicoList.buscar(dni);
+    if (medico != null) {
+        // Eliminar el medico si existe.
+        medicoList.eliminar(medico);
+        JOptionPane.showMessageDialog(this, "Medico eliminado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        // Actualizar la tabla después de la eliminación.
+        btnListarActionPerformed(null); // Vuelve a cargar los datos en la tabla.
+    } else {
+        // Mostrar mensaje si el paciente no fue encontrado.
+        JOptionPane.showMessageDialog(this, "No se encontró el Medico con la DNI seleccionada", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btnEliminarMedicoActionPerformed
 
     private void btnBuscarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMedicoActionPerformed
-        // TODO add your handling code here:
+      String F_dniTexto = txtBuscarMedico.getText().trim(); // Obtenemos lo ingresado en txtBuscar y el (.trim) limpia los espacios en blanco.
+    
+      //Validamos si el campo esta vacío, el (.isEmpty) comprueba si esat vacío.
+    if (F_dniTexto.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese un DNI");
+        return; // Si falla el programa se detiene.
+    }
+    
+    //Validamos El campo.
+    if (!Validador.DNI(F_dniTexto)) {
+    JOptionPane.showMessageDialog(this, "El DNI debe contener exactamente 8 numeros.");
+    txtBuscarMedico.setText(""); // Limpia el campo.
+    return;
+    }
+    
+    int dni = Integer.parseInt(F_dniTexto);       // Convierte en valor ingresado a entero.
+    
+    // Buscar paciente.
+    Medico medico = medicoList.buscar(dni);       //usamos el metodo buscar de la arraylist.
+    if (medico != null) {     // Si se encuentra al paciente.
+        actualizar2(List.of(medico)); // Llama al método actualiza y este crea una lista con el medico que encontro.
+    } else {    // De no haber pasiente manda este mensaje.
+        JOptionPane.showMessageDialog(this, "No hay medico");
+    }
+
+    txtBuscar.setText(""); // Limpia el campo después de buscar.
     }//GEN-LAST:event_btnBuscarMedicoActionPerformed
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        actualizar1(pacienteList.listarPacientes()); // Llama al metodo Actualizar
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void btnListarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarMedicoActionPerformed
+        actualizar2(medicoList.listarMedicos()); // Llama al metodo Actualizar
+    }//GEN-LAST:event_btnListarMedicoActionPerformed
+
+    private void actualizar1(List<Paciente> listaPacientes) {
+    DefaultTableModel modelo = (DefaultTableModel) tbPacientes.getModel();
+    modelo.setRowCount(0);  //Limpiar filas existentes.
+
+    for (Paciente paciente : listaPacientes) {      // Bucle que permite iterar sobre cada Paciente de la lista "listaPacientes", cada paciente de un objeto Paciente 
+        Object[] fila = {       // Se crean arreglos para cada columna.
+            paciente.getF_dni(),
+            paciente.getF_nombres(),
+            paciente.getF_apellidos(),
+            paciente.getF_fechaNacimiento(),
+            paciente.getF_genero(),
+            paciente.getF_direccion(),
+            paciente.getF_telefono(),
+            paciente.getF_email(),
+            paciente.getF_grupoSanguineo(),
+            paciente.getF_aversiones(),
+            paciente.getF_enfermedades(),
+            paciente.getF_fechaInscripcion()
+        };
+        modelo.addRow(fila);        // Se agrega una nueva fila al modelo que seria la tabla del arreglo fila.
+    }
+    tbPacientes.setModel(modelo); //Para los cambios.
+}
+
+    private void actualizar2(List<Medico> listaMedicos) {
+    DefaultTableModel modelo1 = (DefaultTableModel) tbMedico.getModel();
+    modelo1.setRowCount(0);  //Limpiar filas existentes.
+
+    for (Medico medicos : listaMedicos) {      // Bucle que permite iterar sobre cada Paciente de la lista "listaMedicos", cada medico de un objeto Medico 
+        Object[] fila1 = {       // Se crean arreglos para cada columna.
+            medicos.getF_dni(),
+            medicos.getF_nombres(),
+            medicos.getF_apellidos(),
+            medicos.getF_fechaNacimiento(),
+            medicos.getF_genero(),
+            medicos.getF_direccion(),
+            medicos.getF_telefono(),
+            medicos.getF_email(),
+            medicos.getF_colegiatura(),
+            medicos.getF_especialidad(),
+            medicos.getF_grado(),
+        };
+        modelo1.addRow(fila1);        // Se agrega una nueva fila al modelo1 que seria la tabla del arreglo fila1.
+    }
+    tbPacientes.setModel(modelo1); //Para los cambios.
+    }
 
 
     /**
@@ -495,11 +673,13 @@ AgregarCita agregar = new AgregarCita(); // Instanciamos.
     private javax.swing.JButton btnBuscarCita;
     private javax.swing.JButton btnBuscarMedico;
     private javax.swing.JButton btnCita;
-    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEditarCita;
     private javax.swing.JButton btnEditarMedico;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEliminarCita;
     private javax.swing.JButton btnEliminarMedico;
+    private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnListarMedico;
     private javax.swing.JButton btnMedico;
     private javax.swing.JButton btnPaciente;
     private javax.swing.JButton btnSalir;

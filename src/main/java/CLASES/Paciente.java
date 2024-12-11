@@ -7,13 +7,14 @@ public class Paciente extends Persona {
     private String F_enfermedades;
     private Date F_fechaInscripcion;
 
-    Paciente(String F_grupoSanguineo, String F_aversiones, String F_enfermedades, Date F_fechaInscripcion, int F_dni, String F_nombres, String F_apellidos, Date F_fechaNacimiento, String F_genero, String F_direccion, int F_telefono, String F_email) {
-        super(F_dni, F_nombres, F_apellidos, F_fechaNacimiento, F_direccion, F_telefono, F_email);
+    Paciente(String F_grupoSanguineo, String F_aversiones, String F_enfermedades, Date F_fechaInscripcion, int F_dni, String F_nombres, String F_apellidos, Date F_fechaNacimiento, String F_genero, int F_telefono, String F_direccion, String F_email) {
+        super(F_dni, F_nombres, F_apellidos, F_fechaNacimiento, F_genero, F_direccion, F_telefono, F_email);
         this.F_grupoSanguineo = F_grupoSanguineo;
         this.F_aversiones = F_aversiones;
         this.F_enfermedades = F_enfermedades;
         this.F_fechaInscripcion = F_fechaInscripcion;
     }
+
 
     public String getF_grupoSanguineo() {
         return F_grupoSanguineo;

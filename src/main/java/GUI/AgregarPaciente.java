@@ -15,13 +15,12 @@ import java.util.Date;
  * @author Pablo
  */
 public class AgregarPaciente extends javax.swing.JFrame {
-    private PacienteList Lista = new PacienteList();
     /**
      * Creates new form AgregarPaciente
      */
     public AgregarPaciente() {
         initComponents();
-    
+        
         jcFechaInscripcion.setMaxSelectableDate(new Date());
                         // fecha maxima que se puede seleecionar( se generan la fecha alctual y eso se usa como constructor).
         jcFechaInscripcion.setMinSelectableDate(new Date());
@@ -30,7 +29,10 @@ public class AgregarPaciente extends javax.swing.JFrame {
         
         jcFechaNacimiento.setMaxSelectableDate(new Date()); 
         // fecha maxima que se puede seleecionar( se generan la fecha alctual y eso se usa como constructor).
-    }
+    
+         // Si estamos en modo edición, cargamos los datos del paciente
+
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -104,6 +106,12 @@ public class AgregarPaciente extends javax.swing.JFrame {
         cmbGrupoSanguineo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbGrupoSanguineoActionPerformed(evt);
+            }
+        });
+
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
             }
         });
 
@@ -358,24 +366,20 @@ if (fechaInscripcion == null) {
     JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha de inscripción.");
     return;
 }
- 
-// Paciente paciente = new Paciente(
-//    txtDNI.getText(),
-//    txtNombres.getText(),
-//    txtApellidos.getText(),
-//    jcFechaNacimiento.getDate(),
-//    rbMasculino.isSelected() ? "Femenino" : "Masculino",
-//    txtDireccion.getText(),
-//    txtTelefono.getText(),
-//    txtEmail.getText(),
-//    cmbGrupoSanguineo.getSelectedItem().toString(),
-//    txtAversion.getText(),
-//    txtEnfermedades.getText(),
-//    jcFechaInscripcion.getDate()
-//);
+
+Paciente paciente = new Paciente();
+
+
 // Si todo esta bien saldra este mensaje.
 JOptionPane.showMessageDialog(null, "Registro exitoso.");
+dispose(); // Cerrar el formulario
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
+
 
     /**
      * @param args the command line arguments

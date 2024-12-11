@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
+import CLASES.Medico;
+import Validadores.Validador;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,8 +57,8 @@ public class AgregarMedico extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtColegiaturaMedico = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmbEspecialidad = new javax.swing.JComboBox<>();
+        cmbGrado = new javax.swing.JComboBox<>();
         btnAgregarMedico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -112,11 +115,16 @@ public class AgregarMedico extends javax.swing.JFrame {
 
         jLabel12.setText("Grado :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar una opción", "General", "Obstetricia", "Psiquiatria", "Pedriatria", "Cardiologo", "Dermatologo" }));
+        cmbEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar una opción", "General", "Obstetricia", "Psiquiatria", "Pedriatria", "Cardiologo", "Dermatologo" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Bachiller", "Licenciado", "Magister", "Doctorado" }));
+        cmbGrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Bachiller", "Licenciado", "Magister", "Doctorado" }));
 
         btnAgregarMedico.setText("Agregar");
+        btnAgregarMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarMedicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -176,12 +184,12 @@ public class AgregarMedico extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(cmbEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(btnCancelarMedico)
@@ -249,13 +257,13 @@ public class AgregarMedico extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
                                 .addComponent(jLabel11))
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
                                 .addComponent(jLabel12))
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -294,6 +302,83 @@ public class AgregarMedico extends javax.swing.JFrame {
     private void txtDireccionMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionMedicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionMedicoActionPerformed
+
+    private void btnAgregarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMedicoActionPerformed
+        // Validamos los campos de texto.
+if (!Validador.DNI(txtDNIMedico.getText())) {
+    JOptionPane.showMessageDialog(this, "El DNI debe tener 8 números.");
+    txtDNIMedico.setText(""); // Limpiamos solo el campo que ha fallado.
+    return; // Detiene la ejecución.
+}
+
+if (!Validador.Letras(txtNombresMedico.getText())) {
+    JOptionPane.showMessageDialog(this, "En nombres, ingrese solo letras.");
+    txtNombresMedico.setText("");
+    return;
+}
+
+if (!Validador.Letras(txtApellidosMedico.getText())) {
+    JOptionPane.showMessageDialog(this, "En apellidos, ingrese solo letras.");
+    txtApellidosMedico.setText("");
+    return;
+}
+
+// Validamos Fecha de nacimiento
+java.util.Date fechaNacimiento = jcFechaNacimientoMedico.getDate();
+if (fechaNacimiento == null) {
+    JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha de nacimiento.");
+    return;
+}
+
+// Validamos el Género.
+if (!rbMasculinoMedico.isSelected() && !rbFemeninoMedico.isSelected()) {
+    JOptionPane.showMessageDialog(this, "Debe seleccionar un género.");
+    return;
+}
+
+// Validamos los campos de texto.
+if (!Validador.Direccion(txtDireccionMedico.getText())) {
+    JOptionPane.showMessageDialog(this, "La dirección es inválida.");
+    txtDireccionMedico.setText(""); 
+    return;
+}
+
+if (!Validador.Telefono(txtTelefonoMedico.getText())) {
+    JOptionPane.showMessageDialog(this, "El teléfono debe tener 9 números.");
+    txtTelefonoMedico.setText("");
+    return;
+}
+
+if (!Validador.Email(txtEmailMedico.getText())) {
+    JOptionPane.showMessageDialog(this, "El email debe tener un formato válido.");
+    txtEmailMedico.setText("");
+    return;
+}
+
+if (!Validador.Colegiatura(txtColegiaturaMedico.getText())) {
+    JOptionPane.showMessageDialog(this, "El DNI debe tener 8 números.");
+    txtColegiaturaMedico.setText(""); // Limpiamos solo el campo que ha fallado.
+    return; // Detiene la ejecución.
+    }
+
+// Validamos especialidad.
+if (cmbEspecialidad.getSelectedIndex() == 0) {
+    JOptionPane.showMessageDialog(this, "Debe seleccionar una especialidad.");
+    cmbEspecialidad.setSelectedIndex(0);
+    return;
+}
+
+// Validamos Grado.
+if (cmbGrado.getSelectedIndex() == 0) {
+    JOptionPane.showMessageDialog(this, "Debe seleccionar gardo.");
+    cmbGrado.setSelectedIndex(0);
+    return;
+}
+// Si todo esta bien saldra este mensaje.
+JOptionPane.showMessageDialog(null, "Registro exitoso.");
+dispose(); // Cerrar el formulario
+    }//GEN-LAST:event_btnAgregarMedicoActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -335,8 +420,8 @@ public class AgregarMedico extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarMedico;
     private javax.swing.JButton btnCancelarMedico;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> cmbEspecialidad;
+    private javax.swing.JComboBox<String> cmbGrado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

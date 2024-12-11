@@ -2,19 +2,21 @@ package CLASES;
 import java.util.Date;
 
 public class Persona {
-    int F_dni;
+    private int F_dni;
     private String F_nombres;
     private String F_apellidos;
     private Date F_fechaNacimiento;
+    private String F_genero;
     private String F_direccion;
     private int F_telefono;
     private String F_email;
 
-    public Persona(int F_dni, String F_nombres, String F_apellidos, Date F_fechaNacimiento, String F_direccion, int F_telefono, String F_email) {
+    public Persona(int F_dni, String F_nombres, String F_apellidos, Date F_fechaNacimiento, String F_genero, String F_direccion, int F_telefono, String F_email) {
         this.F_dni = F_dni;
         this.F_nombres = F_nombres;
         this.F_apellidos = F_apellidos;
         this.F_fechaNacimiento = F_fechaNacimiento;
+        this.F_genero = F_genero;
         this.F_direccion = F_direccion;
         this.F_telefono = F_telefono;
         this.F_email = F_email;
@@ -52,6 +54,14 @@ public class Persona {
         this.F_fechaNacimiento = F_fechaNacimiento;
     }
 
+    public String getF_genero() {
+        return F_genero;
+    }
+
+    public void setF_genero(String F_genero) {
+        this.F_genero = F_genero;
+    }
+    
     public String getF_direccion() {
         return F_direccion;
     }

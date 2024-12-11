@@ -1,9 +1,4 @@
 package Validadores;
-import com.toedter.calendar.JDateChooser;
-import java.util.Date;
-import java.util.regex.Pattern;
-
-// Usamos BOOLEAN por que al ser un validador es una condicion y este tipo de dato devuelve True y False.
 //  Devuelve un valor boolean (.matches), además sirve para ver si la cadema cumple con la condiciòn establecidad. 
 
 public class Validador {
@@ -31,5 +26,10 @@ public class Validador {
     // Validamos teléfono que tenga 9 números
     public static boolean Telefono(String telefono) {
         return telefono.matches("\\d{9}");
+    }
+    
+    // Colegiatura
+    public static boolean Colegiatura(String colegiatura) {
+        return colegiatura.matches("\\d{5}");
     }
 }

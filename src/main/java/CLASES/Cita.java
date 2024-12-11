@@ -1,5 +1,6 @@
 package CLASES;
 import java.util.Date;
+import java.util.Objects;
 
 public class Cita {
     private int F_numeroCita;
@@ -50,5 +51,18 @@ public class Cita {
     }
 
     public void cancelarCita() {
+    }
+    //Metodos fundamentales que trabajan con HasSet, definen como comprar objetos.
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cita cita = (Cita) o;
+        return F_numeroCita == cita.F_numeroCita; // Comparar por número de cita
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(F_numeroCita); // Generar hash basado en número de cita
     }
 }
